@@ -13,6 +13,13 @@ import {
   RefineSnackbarProvider,
   ThemedLayoutV2,
 } from "@refinedev/mui";
+import {
+  AccountCircleOutlined,
+  ChatBubbleOutline,
+  PeopleAltOutlined,
+  StarOutlineRounded,
+  VillaOutlined,
+} from "@mui/icons-material";
 
 import CssBaseline from "@mui/material/CssBaseline";
 import GlobalStyles from "@mui/material/GlobalStyles";
@@ -40,7 +47,19 @@ import {
   CategoryList,
   CategoryShow,
 } from "./pages/categories";
-import { Login } from "./pages/login";
+
+import {
+  Login,
+  Home,
+  Agents,
+  MyProfile,
+  PropertyDetails,
+  AllProperties,
+  CreateProperty,
+  AgentProfile,
+  EditProperty,
+} from "./pages/login";
+
 import { parseJwt } from "./utils/parse-jwt";
 
 const axiosInstance = axios.create();
@@ -146,23 +165,39 @@ function App() {
                 authProvider={authProvider}
                 resources={[
                   {
-                    name: "blog_posts",
+                    name: "Property",
                     list: "/blog-posts",
-                    create: "/blog-posts/create",
-                    edit: "/blog-posts/edit/:id",
-                    show: "/blog-posts/show/:id",
                     meta: {
-                      canDelete: true,
+                      icon: <VillaOutlined />,
                     },
                   },
                   {
-                    name: "categories",
-                    list: "/categories",
-                    create: "/categories/create",
-                    edit: "/categories/edit/:id",
-                    show: "/categories/show/:id",
+                    name: "agent",
+                    list: "/blog-posts",
                     meta: {
-                      canDelete: true,
+                      icon: <PeopleAltOutlined />,
+                    },
+                  },
+                  {
+                    name: "review",
+                    list: "/blog-posts",
+                    meta: {
+                      icon: <StarOutlineRounded />,
+                    },
+                  },
+                  {
+                    name: "message",
+                    list: "/blog-posts",
+                    meta: {
+                      icon: <ChatBubbleOutline />,
+                    },
+                  },
+                  {
+                    name: "my_profile",
+                    list: "/blog-posts",
+                    meta: {
+                      label: "My Profile",
+                      icon: <AccountCircleOutlined />,
                     },
                   },
                 ]}

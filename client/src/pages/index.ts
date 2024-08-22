@@ -1,0 +1,9 @@
+export { Home } from "./home";
+export { AgentProfile } from "./agent-profile";
+export { Agent } from "./agent";
+export { AllProperties } from "./all-properties";
+export { CreateProperty } from "./create-property";
+export { EditProperty } from "./edit-property";
+export { PropertyDetails } from "./property-details";
+export { MyProfile } from "./my-profile";
+export { Login } from "./login";
