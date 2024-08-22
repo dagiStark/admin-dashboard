@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AgentCard = () => {
+export const AgentCard = () => {
   return (
     <div>
       
@@ -8,4 +8,3 @@ const AgentCard = () => {
   )
 }
 
-export default AgentCard

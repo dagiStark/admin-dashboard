@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const Form = () => {
+export const PropertyReferrals = () => {
   return (
     <div>
-      
+      propery refrerrals
     </div>
   )
 }

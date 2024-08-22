@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PropertyRefferals = () => {
+export const PropertyCard = () => {
   return (
     <div>
       
@@ -8,4 +8,3 @@ const PropertyRefferals = () => {
   )
 }
 
-export default PropertyRefferals
