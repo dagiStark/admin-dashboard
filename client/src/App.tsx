@@ -51,14 +51,14 @@ import {
 import {
   Login,
   Home,
-  Agents,
+  Agent,
   MyProfile,
   PropertyDetails,
   AllProperties,
   CreateProperty,
   AgentProfile,
   EditProperty,
-} from "./pages/login";
+} from "./pages";
 
 import { parseJwt } from "./utils/parse-jwt";
 
@@ -151,7 +151,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      <GitHubBanner />
       <RefineKbarProvider>
         <ColorModeContextProvider>
           <CssBaseline />
@@ -164,6 +163,11 @@ function App() {
                 routerProvider={routerBindings}
                 authProvider={authProvider}
                 resources={[
+                  {
+                    name: "Dashboard",
+                    list: "/dashboard",
+                    meta: {},
+                  },
                   {
                     name: "Property",
                     list: "/blog-posts",
@@ -225,6 +229,9 @@ function App() {
                       index
                       element={<NavigateToResource resource="blog_posts" />}
                     />
+                    <Route path="/dashboard">
+                      <Route index element={<Home />} />
+                    </Route>
                     <Route path="/blog-posts">
                       <Route index element={<BlogPostList />} />
                       <Route path="create" element={<BlogPostCreate />} />
@@ -237,7 +244,7 @@ function App() {
                       <Route path="edit/:id" element={<CategoryEdit />} />
                       <Route path="show/:id" element={<CategoryShow />} />
                     </Route>
-                    <Route path="*" element={<ErrorComponent />} />
+                    {/* <Route path="*" element={<ErrorComponent />} /> */}
                   </Route>
                   <Route
                     element={
@@ -257,7 +264,6 @@ function App() {
                 <UnsavedChangesNotifier />
                 <DocumentTitleHandler />
               </Refine>
-              <DevtoolsPanel />
             </DevtoolsProvider>
           </RefineSnackbarProvider>
         </ColorModeContextProvider>
