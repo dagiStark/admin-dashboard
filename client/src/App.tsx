@@ -51,11 +51,11 @@ import {
 import {
   Login,
   Home,
-  Agent,
+  Agents,
   MyProfile,
   PropertyDetails,
   AllProperties,
-  CreateProperty,
+  CreateProperties,
   AgentProfile,
   EditProperty,
 } from "./pages";
@@ -164,41 +164,45 @@ function App() {
                 authProvider={authProvider}
                 resources={[
                   {
-                    name: "Dashboard",
-                    list: "/dashboard",
+                    name: "dashboard",
+                    list: Home,
                     meta: {},
                   },
                   {
-                    name: "Property",
-                    list: "/blog-posts",
+                    name: "Properties",
+                    list: "/properties",
+                    show: "/properties/show/:id",
+                    create: "/properties/create",
+                    edit: "/properties/edit/:id",
                     meta: {
                       icon: <VillaOutlined />,
                     },
                   },
                   {
-                    name: "agent",
-                    list: "/blog-posts",
+                    name: "agents",
+                    list: Agents,
+                    show: AgentProfile,
                     meta: {
                       icon: <PeopleAltOutlined />,
                     },
                   },
                   {
                     name: "review",
-                    list: "/blog-posts",
+                    list: Home,
                     meta: {
                       icon: <StarOutlineRounded />,
                     },
                   },
                   {
                     name: "message",
-                    list: "/blog-posts",
+                    list: Home,
                     meta: {
                       icon: <ChatBubbleOutline />,
                     },
                   },
                   {
                     name: "my_profile",
-                    list: "/blog-posts",
+                    list: MyProfile,
                     meta: {
                       label: "My Profile",
                       icon: <AccountCircleOutlined />,
@@ -232,11 +236,11 @@ function App() {
                     <Route path="/dashboard">
                       <Route index element={<Home />} />
                     </Route>
-                    <Route path="/blog-posts">
-                      <Route index element={<BlogPostList />} />
-                      <Route path="create" element={<BlogPostCreate />} />
-                      <Route path="edit/:id" element={<BlogPostEdit />} />
-                      <Route path="show/:id" element={<BlogPostShow />} />
+                    <Route path="/properties">
+                      <Route index element={<AllProperties />} />
+                      <Route path="create" element={<CreateProperties />} />
+                      <Route path="edit/:id" element={<EditProperty />} />
+                      <Route path="show/:id" element={<PropertyDetails />} />
                     </Route>
                     <Route path="/categories">
                       <Route index element={<CategoryList />} />
@@ -259,7 +263,6 @@ function App() {
                     <Route path="/login" element={<Login />} />
                   </Route>
                 </Routes>
-
                 <RefineKbar />
                 <UnsavedChangesNotifier />
                 <DocumentTitleHandler />

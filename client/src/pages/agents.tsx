@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Agent = () => {
+export const Agents = () => {
   return (
     <div>
       
