@@ -1,5 +1,4 @@
 import { useGo } from "@refinedev/core";
-import { Link } from "react-router-dom";
 import { Box, Stack, Typography } from "@mui/material";
 import { CustomButton } from "../components";
 import { Add } from "@mui/icons-material";
@@ -23,3 +22,4 @@ export const AllProperties = () => {
     </Box>
   );
 };
+
