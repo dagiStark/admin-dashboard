@@ -8,13 +8,12 @@ import {
   deleteProperty,
 } from "../controllers/property.controller";
 
-const router = express.Router()
+const router = express.Router();
 
-router.get("/", getAllProperties)
-router.get("/:id", getPropertyDetail)
-router.post("/", createProperty)
-router.put("/:id", updateProperty)
-router.delete("/:id", deleteProperty)
+router.route("/").get(getAllProperties);
+router.route("/:id").get(getPropertyDetail);
+router.route("/").post(createProperty);
+router.route("/:id").patch(updateProperty);
+router.route("/:id").delete(deleteProperty);
 
-
-export default router
+export default router;
