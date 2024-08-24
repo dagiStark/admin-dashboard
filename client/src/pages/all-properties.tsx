@@ -19,6 +19,7 @@ export const AllProperties = () => {
           icon={<Add />}
         />
       </Stack>
+      
     </Box>
   );
 };

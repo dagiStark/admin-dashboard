@@ -11,17 +11,17 @@ import {
   Typography,
 } from "@mui/material";
 import { CustomButton } from "./CustomButton";
+import { FormProps } from "../../interfaces/common";
 
 export const Form = ({
   type,
   register,
-  onFinish,
   formLoading,
   handleSubmit,
   handleImageChange,
   onFinishHandler,
   propertyImage,
-}) => {
+}: FormProps) => {
   return (
     <Box>
       <Typography fontSize={25} fontWeight={700} color="#11142d">
@@ -139,59 +139,69 @@ export const Form = ({
             </FormControl>
           </Stack>
           <FormControl>
-              <FormHelperText
+            <FormHelperText
+              sx={{
+                fontWeight: 500,
+                margin: "10px 0",
+                fontSize: 16,
+                color: "#11142d",
+              }}
+            >
+              Enter location
+            </FormHelperText>
+            <TextField
+              fullWidth
+              required
+              id="outlined-basic"
+              color="info"
+              variant="outlined"
+              {...register("location", { required: true })}
+            />
+          </FormControl>
+          <Stack direction="column" gap={1} justifyContent="center" mb={2}>
+            <Stack direction="row" gap={2}>
+              <Typography
+                color="#11142d"
+                fontSize={16}
+                fontWeight={500}
+                my="10px"
+              >
+                Property photo
+              </Typography>
+              <Button
+                component="label"
                 sx={{
-                  fontWeight: 500,
-                  margin: "10px 0",
+                  width: "fit-content",
+                  color: "#2ed480",
+                  textTransform: "capitalize",
                   fontSize: 16,
-                  color: "#11142d",
                 }}
               >
-                Enter location
-              </FormHelperText>
-              <TextField
-                fullWidth
-                required
-                id="outlined-basic"
-                color="info"
-                variant="outlined"
-                {...register("location", { required: true })}
-              />
-            </FormControl>
-            <Stack direction="column" gap={1} justifyContent="center" mb={2}>
-              <Stack direction="row" gap={2}>
-                <Typography color="#11142d" fontSize={16} fontWeight={500} my="10px">
-                  Property photo
-                </Typography>
-                <Button component="label" sx={{
-                  width: 'fit-content',
-                  color: '#2ed480',
-                  textTransform: 'capitalize',
-                  fontSize: 16
-                }}>
-                  upload *
-                  <input 
+                upload *
+                <input
                   hidden
                   accept="image/*"
                   type="file"
-                  onChange={(e)=>{
-                    // @ts-ignore
-                    handleImageChange(e.target.files[0])
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    handleImageChange(e.target.files![0]);
                   }}
-
-                  />
-                </Button>
-              </Stack>
-              <Typography fontSize={14} color="#808191" sx={{wordBreak: 'break-all'}}>
-                {propertyImage?.name}
-              </Typography>
+                />
+              </Button>
             </Stack>
-            <CustomButton 
+            <Typography
+              fontSize={14}
+              color="#808191"
+              sx={{ wordBreak: "break-all" }}
+            >
+              {propertyImage?.name}
+            </Typography>
+          </Stack>
+          <CustomButton
             type="submit"
-            title={formLoading ? 'submitting...' : 'submit'}
+            title={formLoading ? "submitting..." : "submit"}
             backgroundColor="#475be8"
             color="#fcfcfc"
-            />
+          />
         </form>
       </Box>
     </Box>

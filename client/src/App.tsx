@@ -31,7 +31,6 @@ import { Header } from "./components/header";
 import { ColorModeContextProvider } from "./contexts/color-mode";
 import { CredentialResponse } from "./interfaces/google";
 
-
 import {
   Login,
   Home,
@@ -149,7 +148,7 @@ function App() {
           <RefineSnackbarProvider>
             <DevtoolsProvider>
               <Refine
-                dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
+                dataProvider={dataProvider("http://localhost:8080/api/v1")}
                 notificationProvider={notificationProvider}
                 routerProvider={routerBindings}
                 authProvider={authProvider}
@@ -160,7 +159,7 @@ function App() {
                     meta: {},
                   },
                   {
-                    name: "Properties",
+                    name: "properties",
                     list: "/properties",
                     show: "/properties/show/:id",
                     create: "/properties/create",

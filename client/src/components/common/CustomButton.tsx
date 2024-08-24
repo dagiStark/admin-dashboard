@@ -12,6 +12,7 @@ export const CustomButton = ({
 }: CustomButtonProps) => {
   return (
     <Button
+      type={type === "submit" ? "submit" : "button"}
       sx={{
         flex: fullWidth ? 1 : "unset",
         padding: "10px 15px",
@@ -21,11 +22,12 @@ export const CustomButton = ({
         color,
         fontSize: 16,
         fontWeight: 600,
-        gap: '10px',
-        textTransform: 'capitalize', '&:hover' : {
+        gap: "10px",
+        textTransform: "capitalize",
+        "&:hover": {
           opacity: 0.9,
-          backgroundColor
-        }
+          backgroundColor,
+        },
       }}
       onClick={handleClick}
     >
