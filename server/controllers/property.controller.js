@@ -12,7 +12,40 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-export const getAllProperties = async (req, res) => {};
+export const getAllProperties = async (req, res) => {
+  const {
+    _end,
+    _order,
+    _start,
+    _sort,
+    title_like = "",
+    propertyType = "",
+  } = req.query;
+
+  const query = {};
+
+  if (propertyType !== "") {
+    query.propertyType = propertyType;
+  }
+  if (title_like) {
+    query.title = { $regex: title_like, $options: "i" };
+  }
+
+  try {
+    const count = await Property.countDocuments({ query });
+    const properties = await Property.find(query)
+      .limit(_end)
+      .skip(_start)
+      .sort({ [_sort]: _order });
+
+    res.header("x-total-count", count);
+    res.header("Access-Control-Expose-Headers", "x-total-count");
+    res.status(200).json(properties);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 export const getPropertyDetail = async (req, res) => {};
 
 export const createProperty = async (req, res) => {
@@ -26,8 +59,12 @@ export const createProperty = async (req, res) => {
     const user = await User.findOne({ email }).session(session);
     if (!user) throw new Error("User not found");
 
-    const photoUrl = await cloudinary.uploader.upload(photo);
+    // Log the photo data to ensure it's correct
 
+    const photoUrl = await cloudinary.uploader
+      .upload(photo)
+      .catch((error) => console.log(error));
+    console.log("Photo data:", photoUrl.url);
 
     const newProperty = await Property.create({
       title,
@@ -45,6 +82,7 @@ export const createProperty = async (req, res) => {
     res.status(200).json({ message: "Property created successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
+    console.log("Cloudinary Upload Error:", error);
   }
 };
 

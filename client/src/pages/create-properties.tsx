@@ -17,6 +17,7 @@ export const CreateProperties = () => {
   } = useForm();
 
   const handleImageChange = (file: File) => {
+    
     const reader = (readFile: File) =>
       new Promise<string>((resolve, reject) => {
         const fileReader = new FileReader();
