@@ -37,6 +37,9 @@ export const AllProperties = () => {
 
     return {
       title: logicalFilters.find((item) => item.field === "title")?.value || "",
+      propertyType:
+        logicalFilters.find((item) => item.field === "propertyType")?.value ||
+        "",
     };
   }, [filters]);
 
@@ -84,11 +87,13 @@ export const AllProperties = () => {
                 onChange={(e) => {
                   setFilters([
                     {
-                      field: 'title',
-                      operator: 'contains',
-                      value: e.currentTarget.value ? e.currentTarget.value : undefined
-                    }
-                  ])
+                      field: "title",
+                      operator: "contains",
+                      value: e.currentTarget.value
+                        ? e.currentTarget.value
+                        : undefined,
+                    },
+                  ]);
                 }}
               />
               <Select
@@ -98,10 +103,35 @@ export const AllProperties = () => {
                 required
                 inputProps={{ "aria-label": "without-label" }}
                 defaultValue=""
-                value=""
-                onChange={() => {}}
+                value={currentFilterValues.propertyType}
+                onChange={(e) => {
+                  setFilters(
+                    [
+                      {
+                        field: "title",
+                        operator: "eq",
+                        value: e.target.value,
+                      },
+                    ],
+                    "replace"
+                  );
+                }}
               >
-                <MenuItem>ALL</MenuItem>
+                <MenuItem value="">ALL</MenuItem>
+                {[
+                  "apartment",
+                  "villa",
+                  "farmhouse",
+                  "condos",
+                  "townhouse",
+                  "duplex",
+                  "studio",
+                  "chalet",
+                ].map((type) => (
+                  <MenuItem key={type} value={type.toLowerCase()}>
+                    {type}
+                  </MenuItem>
+                ))}
               </Select>
             </Box>
           </Box>
@@ -165,9 +195,8 @@ export const AllProperties = () => {
             displayEmpty
             required
             inputProps={{ "aria-label": "without-label" }}
-            defaultValue=""
-            value=""
-            onChange={() => {}}
+            defaultValue={10}
+            onChange={(e) => {setPageSize(e.target.value ? Number(e.target.value) : 10)}}
           >
             {[10, 20, 30, 40, 50].map((size) => (
               <MenuItem key={size} value={size}>
