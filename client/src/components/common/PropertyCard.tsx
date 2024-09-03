@@ -1,5 +1,5 @@
 import { Place } from "@mui/icons-material";
-import { Link } from "@pankod/refine-react-router-v6";
+import  Link  from "@refinedev/react-router-v6";
 import { PropertyCardProps } from "../../interfaces/property";
 import {
   Card,

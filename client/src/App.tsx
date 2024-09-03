@@ -170,7 +170,7 @@ function App() {
                   },
                   {
                     name: "agents",
-                    list: Agents,
+                    list: "/agents",
                     show: AgentProfile,
                     meta: {
                       icon: <PeopleAltOutlined />,
@@ -225,6 +225,30 @@ function App() {
                     />
                     <Route path="/dashboard">
                       <Route index element={<Home />} />
+                    </Route>
+                    <Route path="/properties">
+                      <Route index element={<AllProperties />} />
+                      <Route path="create" element={<CreateProperties />} />
+                      <Route path="edit/:id" element={<EditProperty />} />
+                      <Route path="show/:id" element={<PropertyDetails />} />
+                    </Route>
+                    <Route path="/agents">
+                      <Route index element={<Agents />} />
+                      <Route path="create" element={<CreateProperties />} />
+                      <Route path="edit/:id" element={<EditProperty />} />
+                      <Route path="show/:id" element={<PropertyDetails />} />
+                    </Route>
+                    <Route path="/properties">
+                      <Route index element={<AllProperties />} />
+                      <Route path="create" element={<CreateProperties />} />
+                      <Route path="edit/:id" element={<EditProperty />} />
+                      <Route path="show/:id" element={<PropertyDetails />} />
+                    </Route>
+                    <Route path="/properties">
+                      <Route index element={<AllProperties />} />
+                      <Route path="create" element={<CreateProperties />} />
+                      <Route path="edit/:id" element={<EditProperty />} />
+                      <Route path="show/:id" element={<PropertyDetails />} />
                     </Route>
                     <Route path="/properties">
                       <Route index element={<AllProperties />} />
