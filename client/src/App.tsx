@@ -236,7 +236,7 @@ function App() {
                       <Route index element={<Agent />} />
                       <Route path="create" element={<CreateProperties />} />
                       <Route path="edit/:id" element={<EditProperty />} />
-                      <Route path="show/:id" element={<PropertyDetails />} />
+                      <Route path="show/:id" element={<AgentProfile />} />
                     </Route>
                     <Route path="/my-profile">
                       <Route index element={<MyProfile />} />
