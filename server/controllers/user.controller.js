@@ -1,9 +1,16 @@
 import User from "../mongodb/models/user.js";
 
-export const getAllUsers = async (req, res) => {};
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find({}).limit(req.query._end);
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
 export const createUser = async (req, res) => {
-    console.log("request done!")
+  console.log("request done!");
   try {
     const { name, email, avatar } = req.body;
     const userExists = await User.findOne({ email });
