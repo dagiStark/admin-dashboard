@@ -1,13 +1,17 @@
 import { useGetIdentity, useOne } from "@refinedev/core";
-import React from "react";
 import { Profile } from "../components";
 
 export const MyProfile = () => {
   const { data: user } = useGetIdentity();
   const { data, isLoading, isError } = useOne({
     resource: "users",
-    id: user?.userid,
+    id: user?.userId,
   });
+
+  console.log("User:", user);
+  console.log("Data:", data);
+  console.log("Loading:", isLoading);
+  console.log("Error:", isError);
 
   const myProfile = data?.data ?? [];
 

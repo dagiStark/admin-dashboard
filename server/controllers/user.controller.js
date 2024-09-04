@@ -28,4 +28,15 @@ export const createUser = async (req, res) => {
   }
 };
 
-export const getUserInfoById = async (req, res) => {};
+export const getUserInfoById = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const user = await User.findOne({ _id: userId }).populate("allProperties");
+
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
