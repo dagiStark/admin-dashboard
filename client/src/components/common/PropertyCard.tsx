@@ -1,5 +1,5 @@
 import { Place } from "@mui/icons-material";
-import  Link  from "@refinedev/react-router-v6";
+import { useLink } from "@refinedev/core";
 import { PropertyCardProps } from "../../interfaces/property";
 import {
   Card,
@@ -17,6 +17,8 @@ export const PropertyCard = ({
   location,
   photo,
 }: PropertyCardProps) => {
+  const Link = useLink();
+
   return (
     <Card
       component={Link}
@@ -28,7 +30,7 @@ export const PropertyCard = ({
           boxShadow: "0 22px 45px 2px rgba(176,176,176,0.1)",
         },
         cursor: "pointer",
-        textDecoration: 'none'
+        textDecoration: "none",
       }}
       elevation={0}
     >

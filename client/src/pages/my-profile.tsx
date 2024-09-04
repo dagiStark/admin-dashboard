@@ -8,11 +8,6 @@ export const MyProfile = () => {
     id: user?.userId,
   });
 
-  console.log("User:", user);
-  console.log("Data:", data);
-  console.log("Loading:", isLoading);
-  console.log("Error:", isError);
-
   const myProfile = data?.data ?? [];
 
   if (isLoading) return <div>Loading....</div>;
