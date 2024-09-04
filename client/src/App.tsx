@@ -34,7 +34,7 @@ import { CredentialResponse } from "./interfaces/google";
 import {
   Login,
   Home,
-  Agents,
+  Agent,
   MyProfile,
   PropertyDetails,
   AllProperties,
@@ -171,7 +171,7 @@ function App() {
                   {
                     name: "agents",
                     list: "/agents",
-                    show: AgentProfile,
+                    show: "/agents/show/:id",
                     meta: {
                       icon: <PeopleAltOutlined />,
                     },
@@ -233,7 +233,7 @@ function App() {
                       <Route path="show/:id" element={<PropertyDetails />} />
                     </Route>
                     <Route path="/agents">
-                      <Route index element={<Agents />} />
+                      <Route index element={<Agent />} />
                       <Route path="create" element={<CreateProperties />} />
                       <Route path="edit/:id" element={<EditProperty />} />
                       <Route path="show/:id" element={<PropertyDetails />} />

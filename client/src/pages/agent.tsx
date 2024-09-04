@@ -3,7 +3,7 @@ import { useList } from "@refinedev/core";
 import React from "react";
 import { AgentCard } from "../components";
 
-export const Agents = () => {
+export const Agent = () => {
   const { data, isLoading, isError } = useList({
     resource: "users",
   });

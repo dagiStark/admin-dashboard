@@ -1,6 +1,6 @@
 export { Home } from "./home";
 export { AgentProfile } from "./agent-profile";
-export { Agents } from "./agents";
+export { Agent } from "./agent";
 export { AllProperties } from "./all-properties";
 export { CreateProperties } from "./create-properties";
 export { EditProperty } from "./edit-property";
