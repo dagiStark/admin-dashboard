@@ -192,7 +192,7 @@ function App() {
                   },
                   {
                     name: "my_profile",
-                    list: MyProfile,
+                    list: "/my-profile",
                     meta: {
                       label: "My Profile",
                       icon: <AccountCircleOutlined />,
@@ -238,8 +238,8 @@ function App() {
                       <Route path="edit/:id" element={<EditProperty />} />
                       <Route path="show/:id" element={<PropertyDetails />} />
                     </Route>
-                    <Route path="/properties">
-                      <Route index element={<AllProperties />} />
+                    <Route path="/my-profile">
+                      <Route index element={<MyProfile />} />
                       <Route path="create" element={<CreateProperties />} />
                       <Route path="edit/:id" element={<EditProperty />} />
                       <Route path="show/:id" element={<PropertyDetails />} />
