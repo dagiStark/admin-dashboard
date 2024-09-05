@@ -1,5 +1,4 @@
 import { Box, Stack, Typography } from "@mui/material";
-import React from "react";
 import { propertyReferralsInfo } from "../../constants";
 
 interface ProgressBarProps {

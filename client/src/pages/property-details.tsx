@@ -2,7 +2,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import { useDelete, useGetIdentity, useShow } from "@refinedev/core";
-import { useParams, useNavigation, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import ChatBubble from "@mui/icons-material/ChatBubble";
 import Delete from "@mui/icons-material/Delete";
 import Edit from "@mui/icons-material/Edit";

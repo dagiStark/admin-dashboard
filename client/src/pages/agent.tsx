@@ -1,6 +1,5 @@
 import { Box, Typography } from "@mui/material";
 import { useList } from "@refinedev/core";
-import React from "react";
 import { AgentCard } from "../components";
 
 export const Agent = () => {

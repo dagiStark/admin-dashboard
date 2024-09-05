@@ -1,4 +1,3 @@
-import React from "react";
 
 import { ArrowCircleUpRounded } from "@mui/icons-material";
 import { Box, Stack, Typography } from "@mui/material";

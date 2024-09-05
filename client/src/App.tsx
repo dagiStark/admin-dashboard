@@ -3,16 +3,13 @@ import { DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
 import {
-  notificationProvider,
   RefineSnackbarProvider,
   ThemedLayoutV2,
   useNotificationProvider,
 } from "@refinedev/mui";
 import {
   AccountCircleOutlined,
-  ChatBubbleOutline,
   PeopleAltOutlined,
-  StarOutlineRounded,
   VillaOutlined,
 } from "@mui/icons-material";
 

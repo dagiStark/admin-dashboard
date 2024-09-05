@@ -1,5 +1,4 @@
 import { Box, Stack, Typography } from "@mui/material";
-import React from "react";
 
 import { PieChartProps } from "../../interfaces/home";
 import ReactApexChart from "react-apexcharts";

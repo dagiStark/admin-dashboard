@@ -3,7 +3,6 @@ import {
   PieChart,
   PropertyCard,
   PropertyReferrals,
-  TopAgent,
   TotalRevenue,
 } from "../components";
 import { useList } from "@refinedev/core";
