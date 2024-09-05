@@ -15,9 +15,9 @@ cloudinary.config({
 export const getAllProperties = async (req, res) => {
   const {
     _end,
-    _order,
-    _start,
-    _sort,
+    _order = "asc",
+    _start = 0,
+    _sort = "price",
     title_like = "",
     propertyType = "",
   } = req.query;
@@ -27,19 +27,27 @@ export const getAllProperties = async (req, res) => {
   if (propertyType !== "") {
     query.propertyType = propertyType;
   }
+
   if (title_like) {
     query.title = { $regex: title_like, $options: "i" };
   }
 
   try {
-    const count = await Property.countDocuments({ query });
+    const count = await Property.countDocuments(query);
+
+    const sortQuery = {};
+    if (_sort && _order) {
+      sortQuery[_sort] = _order === "asc" ? 1 : -1;
+    }
+
     const properties = await Property.find(query)
-      .limit(_end)
-      .skip(_start)
-      .sort({ [_sort]: _order });
+      .limit(parseInt(_end))
+      .skip(parseInt(_start))
+      .sort(sortQuery);
 
     res.header("x-total-count", count);
     res.header("Access-Control-Expose-Headers", "x-total-count");
+
     res.status(200).json(properties);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -55,7 +63,7 @@ export const getPropertyDetail = async (req, res) => {
   if (propertyExists) {
     res.status(200).json(propertyExists);
   } else {
-    res.status(404).json({ message: "Property doesn't found!"});
+    res.status(404).json({ message: "Property doesn't found!" });
   }
 };
 

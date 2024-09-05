@@ -7,6 +7,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+
 import { CustomButton, PropertyCard } from "../components";
 import { Add } from "@mui/icons-material";
 import { useTable } from "@refinedev/core";
@@ -44,11 +45,18 @@ export const AllProperties = () => {
   }, [filters]);
 
   const toggleSort = (field: string) => {
-    setSorters([{ field, order: currentPrice === "asc" ? "desc" : "asc" }]);
+    const currentSortOrder = sorters.find(
+      (item) => item.field === field
+    )?.order;
+
+    // Toggle between 'asc', 'desc', and no sort (if none exists)
+    const newSortOrder = currentSortOrder === "asc" ? "desc" : "asc";
+
+    setSorters([{ field, order: newSortOrder }]);
   };
 
   if (isLoading) return <Typography>Loading...</Typography>;
-  if (isError) return <Typography>Error...</Typography>;
+  if (isError) return <Typography>Error</Typography>;
 
   return (
     <Box>
@@ -196,7 +204,9 @@ export const AllProperties = () => {
             required
             inputProps={{ "aria-label": "without-label" }}
             defaultValue={10}
-            onChange={(e) => {setPageSize(e.target.value ? Number(e.target.value) : 10)}}
+            onChange={(e) => {
+              setPageSize(e.target.value ? Number(e.target.value) : 10);
+            }}
           >
             {[10, 20, 30, 40, 50].map((size) => (
               <MenuItem key={size} value={size}>
