@@ -2,7 +2,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import { useDelete, useGetIdentity, useShow } from "@refinedev/core";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigation, useNavigate } from "react-router-dom";
 import ChatBubble from "@mui/icons-material/ChatBubble";
 import Delete from "@mui/icons-material/Delete";
 import Edit from "@mui/icons-material/Edit";
@@ -20,9 +20,7 @@ function checkImage(url: any) {
 
 export const PropertyDetails = () => {
   const navigate = useNavigate();
-  const { data: user } = useGetIdentity({
-    v3LegacyAuthProviderCompatible: true,
-  });
+  const { data: user } = useGetIdentity();
   const { query } = useShow();
   const { mutate } = useDelete();
   const { id } = useParams();
@@ -39,7 +37,7 @@ export const PropertyDetails = () => {
     return <div>Something went wrong!</div>;
   }
 
-  const isCurrentUser = user?.email === propertyDetails.creator.email;
+  const isCurrentUser = user.email === propertyDetails.creator.email;
 
   const handleDeleteProperty = () => {
     const response = confirm("Are you sure you want to delete this property?");
