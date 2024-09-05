@@ -1,12 +1,12 @@
 import { AuthProvider, Authenticated, Refine } from "@refinedev/core";
-import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
+import { DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
 import {
-  ErrorComponent,
   notificationProvider,
   RefineSnackbarProvider,
   ThemedLayoutV2,
+  useNotificationProvider,
 } from "@refinedev/mui";
 import {
   AccountCircleOutlined,
@@ -134,7 +134,6 @@ function App() {
       if (user) {
         return JSON.parse(user);
       }
-
       return null;
     },
   };
@@ -149,7 +148,7 @@ function App() {
             <DevtoolsProvider>
               <Refine
                 dataProvider={dataProvider("http://localhost:8080/api/v1")}
-                notificationProvider={notificationProvider}
+                notificationProvider={useNotificationProvider}
                 routerProvider={routerBindings}
                 authProvider={authProvider}
                 resources={[
@@ -174,20 +173,6 @@ function App() {
                     show: "/agents/show/:id",
                     meta: {
                       icon: <PeopleAltOutlined />,
-                    },
-                  },
-                  {
-                    name: "review",
-                    list: Home,
-                    meta: {
-                      icon: <StarOutlineRounded />,
-                    },
-                  },
-                  {
-                    name: "message",
-                    list: Home,
-                    meta: {
-                      icon: <ChatBubbleOutline />,
                     },
                   },
                   {
@@ -234,27 +219,10 @@ function App() {
                     </Route>
                     <Route path="/agents">
                       <Route index element={<Agent />} />
-                      <Route path="create" element={<CreateProperties />} />
-                      <Route path="edit/:id" element={<EditProperty />} />
                       <Route path="show/:id" element={<AgentProfile />} />
                     </Route>
                     <Route path="/my-profile">
                       <Route index element={<MyProfile />} />
-                      <Route path="create" element={<CreateProperties />} />
-                      <Route path="edit/:id" element={<EditProperty />} />
-                      <Route path="show/:id" element={<PropertyDetails />} />
-                    </Route>
-                    <Route path="/properties">
-                      <Route index element={<AllProperties />} />
-                      <Route path="create" element={<CreateProperties />} />
-                      <Route path="edit/:id" element={<EditProperty />} />
-                      <Route path="show/:id" element={<PropertyDetails />} />
-                    </Route>
-                    <Route path="/properties">
-                      <Route index element={<AllProperties />} />
-                      <Route path="create" element={<CreateProperties />} />
-                      <Route path="edit/:id" element={<EditProperty />} />
-                      <Route path="show/:id" element={<PropertyDetails />} />
                     </Route>
                   </Route>
                   <Route
