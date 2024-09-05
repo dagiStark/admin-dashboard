@@ -48,10 +48,7 @@ export const AllProperties = () => {
     const currentSortOrder = sorters.find(
       (item) => item.field === field
     )?.order;
-
-    // Toggle between 'asc', 'desc', and no sort (if none exists)
     const newSortOrder = currentSortOrder === "asc" ? "desc" : "asc";
-
     setSorters([{ field, order: newSortOrder }]);
   };
 
@@ -116,7 +113,7 @@ export const AllProperties = () => {
                   setFilters(
                     [
                       {
-                        field: "title",
+                        field: "propertyType",
                         operator: "eq",
                         value: e.target.value,
                       },
@@ -191,8 +188,8 @@ export const AllProperties = () => {
             </strong>
           </Box>
           <CustomButton
-            title="Previous"
-            handleClick={() => setCurrent((prev) => prev - 1)}
+            title="Next"
+            handleClick={() => setCurrent((prev) => prev + 1)}
             backgroundColor="#475be8"
             color="#fcfcfc"
             disabled={current === pageCount}

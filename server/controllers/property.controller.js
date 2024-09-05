@@ -60,11 +60,10 @@ export const getPropertyDetail = async (req, res) => {
     "creator"
   );
 
-  if (propertyExists) {
-    res.status(200).json(propertyExists);
-  } else {
-    res.status(404).json({ message: "Property doesn't found!" });
-  }
+  if (!propertyExists)
+    return res.status(404).json({ message: "Property doesn't found!" });
+
+  res.status(200).json(propertyExists);
 };
 
 export const createProperty = async (req, res) => {
