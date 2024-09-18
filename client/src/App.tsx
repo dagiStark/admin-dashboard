@@ -43,6 +43,7 @@ import {
 } from "./pages";
 
 import { parseJwt } from "./utils/parse-jwt";
+import { Box, Typography } from "@mui/material";
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((config) => {
@@ -200,10 +201,17 @@ function App() {
                         <ThemedLayoutV2
                           Header={Header}
                           Title={({ collapsed }) => (
-                            <ThemedTitleV2
-                              collapsed={collapsed}
-                              text="Yariga"
-                            />
+                            <Typography
+                              variant="h6"
+                              component="div"
+                              sx={{ fontWeight: "bold" }}
+                            >
+                              <ThemedTitleV2
+                                collapsed={collapsed}
+                                icon={<PeopleAltOutlined />}
+                                text="Welcome"
+                              />
+                            </Typography>
                           )}
                         >
                           <Outlet />
@@ -215,6 +223,9 @@ function App() {
                       index
                       element={<NavigateToResource resource="blog_posts" />}
                     />
+                    <Route path="/">
+                      <Route index element={<Home />} />
+                    </Route>
                     <Route path="/dashboard">
                       <Route index element={<Home />} />
                     </Route>
