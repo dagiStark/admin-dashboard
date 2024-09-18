@@ -44,6 +44,7 @@ import {
 
 import { parseJwt } from "./utils/parse-jwt";
 import { Box, Typography } from "@mui/material";
+import { LandingPage } from "./components/common";
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((config) => {
@@ -219,13 +220,11 @@ function App() {
                       </Authenticated>
                     }
                   >
+                    <Route index element={<LandingPage />} />
                     <Route
                       index
                       element={<NavigateToResource resource="blog_posts" />}
                     />
-                    <Route path="/">
-                      <Route index element={<Home />} />
-                    </Route>
                     <Route path="/dashboard">
                       <Route index element={<Home />} />
                     </Route>
