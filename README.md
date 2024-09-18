@@ -14,24 +14,11 @@ This is an Admin Dashboard application built using the [Refine](https://refine.d
 ## Technologies Used
 - **Framework**: Refine
 - **Frontend**: React
-- **Backend**: REST API/GraphQL (if applicable)
-- **Database**: MongoDB, MySQL, or others (if applicable)
-- **Authentication**: Custom or third-party providers (e.g., Auth0, Clerk)
+- **Backend**: REST API
+- **Database**: MongoDB
+- **Authentication**: Auth0
 
-## Installation
 
-1. Clone the repository:
-   ```bash
-   git clone <repo-url>
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Start the development server:
-   ```bash
-   npm start
-   ```
 
 ## Configuration
 - Modify the configuration files in the `src` directory to adjust API endpoints, authentication providers, and other settings.
