@@ -1,10 +1,12 @@
 import { AuthProvider, Authenticated, Refine } from "@refinedev/core";
 import { DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
+import { yariga } from "./assets";
 
 import {
   RefineSnackbarProvider,
   ThemedLayoutV2,
+  ThemedTitleV2,
   useNotificationProvider,
 } from "@refinedev/mui";
 import {
@@ -195,7 +197,15 @@ function App() {
                         key="authenticated-inner"
                         fallback={<CatchAllNavigate to="/login" />}
                       >
-                        <ThemedLayoutV2 Header={Header}>
+                        <ThemedLayoutV2
+                          Header={Header}
+                          Title={({ collapsed }) => (
+                            <ThemedTitleV2
+                              collapsed={collapsed}
+                              text="Yariga"
+                            />
+                          )}
+                        >
                           <Outlet />
                         </ThemedLayoutV2>
                       </Authenticated>
