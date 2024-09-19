@@ -1,0 +1,55 @@
+version: "3.8"
+
+services:
+  web:
+    depends_on:
+      - api
+    build: ./client
+    ports:
+      - 5173:5173
+    environment:
+      - VITE_GOOGLE_CLIENT_ID=97210018141-v4695fuv494jb0nnn5v7fvdahenp1r1n.apps.googleusercontent.com
+      - VITE_GOOGLE_CLIENT_SECRET=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
+      - PORT=5173
+    develop:
+      watch:
+        - path: ./client/package.json
+          action: rebuild
+        - path: ./client/package-lock.json
+          action: rebuild
+        - path: ./client
+          target: /app
+          action: sync
+
+  api:
+    depends_on:
+      - db
+    build: ./server
+    ports:
+      - 8080:8080
+    environment:
+      - MONGODB_URI=mongodb+srv://dagigelaneh26:jdMSpgXulOSQf4bR@cluster0.5rpnz9o.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      - PORT=8080
+      - CLOUDINARY_CLOUD_NAME=ds3yxdfdo
+      - CLOUDINARY_API_KEY=314184272271988
+      - CLOUDINARY_API_SECRET=7A4i6eLC2nZjisUGSSh9ZMFWeyA
+    develop:
+      watch:
+        - path: ./server/package.json
+          action: rebuild
+        - path: ./server/package-lock.json
+          action: rebuild
+        - path: ./server
+          target: /app
+          action: sync
+
+  db:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+
+    volumes:
+      - anime:/data/db
+
+volumes:
+  anime:
